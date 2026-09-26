@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обратная связь — Food Construct</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/feedback.css">
+</head>
+<body>
+
+<header>
+    <a class="logo" href="./index.html">Food Construct</a>
+
+    <nav>
+        <a href="./index.html#about">О нас</a>
+        <a href="./index.html#contacts">Контакты</a>
+        <a href="./feedback.html">Обратная связь</a>
+        <a href="./login.html">Войти</a>
+    </nav>
+</header>
+
+<main>
+
+    <section>
+        <h2>Обратная связь</h2>
+
+        <p>Напишите нам, мы ответим в течение рабочего дня.</p>
+
+        <form action="https://httpbin.org/post" method="post" enctype="multipart/form-data">
+
+            <label for="fio">ФИО</label>
+            <input type="text" id="fio" name="fio" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <p><strong>Откуда узнали о нас?</strong></p>
+
+            <label class="choice">
+                <input type="radio" name="source" value="friends" checked>
+                От друзей и знакомых
+            </label>
+
+            <label class="choice">
+                <input type="radio" name="source" value="social">
+                Из социальных сетей
+            </label>
+
+            <label class="choice">
+                <input type="radio" name="source" value="search">
+                Из поисковой системы
+            </label>
+
+            <label class="choice">
+                <input type="radio" name="source" value="ads">
+                Из рекламы
+            </label>
+
+            <label class="choice">
+                <input type="radio" name="source" value="other">
+                Другое
+            </label>
+
+            <br>
+
+            <label for="request_type">Тип обращения</label>
+            <select id="request_type" name="request_type" required>
+                <option value="" disabled selected>Выберите вариант</option>
+                <option value="complaint">Жалоба</option>
+                <option value="suggestion">Предложение</option>
+            </select>
+
+            <label for="message">Текст сообщения</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <label for="attachment">Вложение</label>
+            <input type="file" id="attachment" name="attachment">
+
+            <label class="choice">
+                <input type="checkbox" name="consent" value="yes" required>
+                Даю согласие на обработку персональных данных
+            </label>
+
+            <button type="submit">Отправить</button>
+
+        </form>
+    </section>
+
+</main>
+
+<footer id="contacts">
+    <p><strong>Телефон:</strong> <a href="tel:+70000000000">+7 (000) 000-00-00</a></p>
+    <p><strong>Email:</strong> <a href="mailto:info@foodconstruct.ru">info@foodconstruct.ru</a></p>
+    <p><strong>Обратная связь:</strong> <a href="./feedback.html">Оставить сообщение</a></p>
+    <p>Москва • Работаем ежедневно с 7:00 до 23:00</p>
+</footer>
+
+</body>
+</html>
