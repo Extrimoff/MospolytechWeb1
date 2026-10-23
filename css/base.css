@@ -57,7 +57,12 @@ nav a:hover {
     color: #ff7b00;
 }
 
-main {
+nav a.active {
+    color: #ff7b00;
+}
+
+main,
+.order {
     max-width: 1100px;
     margin: auto;
     padding: 20px 30px 50px;
@@ -95,6 +100,8 @@ form label {
 form input[type="text"],
 form input[type="email"],
 form input[type="password"],
+form input[type="tel"],
+form input[type="time"],
 form select,
 form textarea {
     width: 100%;
