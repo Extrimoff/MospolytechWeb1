@@ -1,13 +1,17 @@
 const selected = {
     soup: null,
     main_course: null,
-    drink: null
+    salad: null,
+    drink: null,
+    dessert: null
 }
 
 const categories = [
     { id: "soup", title: "Суп", empty: "Блюдо не выбрано" },
     { id: "main_course", title: "Главное блюдо", empty: "Блюдо не выбрано" },
-    { id: "drink", title: "Напиток", empty: "Напиток не выбран" }
+    { id: "salad", title: "Салат или стартер", empty: "Блюдо не выбрано" },
+    { id: "drink", title: "Напиток", empty: "Напиток не выбран" },
+    { id: "dessert", title: "Десерт", empty: "Десерт не выбран" }
 ]
 
 const AddDish = (_this) => {
@@ -16,7 +20,7 @@ const AddDish = (_this) => {
 
     selected[dish.category] = dish;
 
-    for (const item of document.querySelectorAll(".dish"))
+    for (const item of card.parentElement.querySelectorAll(".dish"))
         item.classList.remove("selected");
     card.classList.add("selected");
 
