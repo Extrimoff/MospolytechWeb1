@@ -28,6 +28,107 @@
 
 <main>
 
+    <section class="combos">
+        <h2>Доступные для заказа комбо</h2>
+
+        <div class="combos-grid">
+
+            <div class="combo" data-combo="soup main_course salad drink">
+                <div class="combo-dish">
+                    <img src="./img/icons/soup.png" alt="Суп">
+                    <p class="combo-caption">Суп</p>
+                </div>
+
+                <div class="combo-dish">
+                    <img src="./img/icons/main.png" alt="Главное блюдо">
+                    <p class="combo-caption">Главное блюдо</p>
+                </div>
+
+                <div class="combo-dish">
+                    <img src="./img/icons/salad.png" alt="Салат">
+                    <p class="combo-caption">Салат</p>
+                </div>
+
+                <div class="combo-dish">
+                    <img src="./img/icons/drink.png" alt="Напиток">
+                    <p class="combo-caption">Напиток</p>
+                </div>
+            </div>
+
+            <div class="combo" data-combo="soup main_course drink">
+                <div class="combo-dish">
+                    <img src="./img/icons/soup.png" alt="Суп">
+                    <p class="combo-caption">Суп</p>
+                </div>
+
+                <div class="combo-dish">
+                    <img src="./img/icons/main.png" alt="Главное блюдо">
+                    <p class="combo-caption">Главное блюдо</p>
+                </div>
+
+                <div class="combo-dish">
+                    <img src="./img/icons/drink.png" alt="Напиток">
+                    <p class="combo-caption">Напиток</p>
+                </div>
+            </div>
+
+            <div class="combo" data-combo="soup salad drink">
+                <div class="combo-dish">
+                    <img src="./img/icons/soup.png" alt="Суп">
+                    <p class="combo-caption">Суп</p>
+                </div>
+
+                <div class="combo-dish">
+                    <img src="./img/icons/salad.png" alt="Салат">
+                    <p class="combo-caption">Салат</p>
+                </div>
+
+                <div class="combo-dish">
+                    <img src="./img/icons/drink.png" alt="Напиток">
+                    <p class="combo-caption">Напиток</p>
+                </div>
+            </div>
+
+            <div class="combo" data-combo="main_course salad drink">
+                <div class="combo-dish">
+                    <img src="./img/icons/main.png" alt="Главное блюдо">
+                    <p class="combo-caption">Главное блюдо</p>
+                </div>
+
+                <div class="combo-dish">
+                    <img src="./img/icons/salad.png" alt="Салат">
+                    <p class="combo-caption">Салат</p>
+                </div>
+
+                <div class="combo-dish">
+                    <img src="./img/icons/drink.png" alt="Напиток">
+                    <p class="combo-caption">Напиток</p>
+                </div>
+            </div>
+
+            <div class="combo" data-combo="main_course drink">
+                <div class="combo-dish">
+                    <img src="./img/icons/main.png" alt="Главное блюдо">
+                    <p class="combo-caption">Главное блюдо</p>
+                </div>
+
+                <div class="combo-dish">
+                    <img src="./img/icons/drink.png" alt="Напиток">
+                    <p class="combo-caption">Напиток</p>
+                </div>
+            </div>
+
+            <div class="combo combo-dessert">
+                <div class="combo-dish">
+                    <img src="./img/icons/dessert.png" alt="Десерт">
+                    <p class="combo-caption">Десерт</p>
+                    <p class="combo-note">(Можно добавить к любому заказу)</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <section>
         <h2>Выберите суп</h2>
 
@@ -92,7 +193,7 @@
 <div class="order">
     <h2>Сделать заказ</h2>
 
-    <form action="https://httpbin.org/post" method="post">
+    <form action="https://httpbin.org/post" method="post" novalidate>
 
         <div class="order-block">
             <h3>Ваш заказ</h3>
@@ -134,19 +235,20 @@
                 <legend>Время доставки:</legend>
 
                 <label class="choice">
-                    <input type="radio" name="delivery_time" value="asap" required>
+                    <input id="time-radio" type="radio" name="delivery_time" value="asap" required>
                     Как можно скорее
                 </label>
 
                 <label class="choice">
-                    <input type="radio" name="delivery_time" value="exact_time">
+                    <input id="time-radio-enable" type="radio" name="delivery_time" value="exact_time">
                     К указанному времени
                 </label>
             </fieldset>
-
-            <label for="time">Укажите время доставки</label>
-            <input type="time" id="time" name="time" min="07:00" max="23:00" step="300">
-            <p class="hint">Доставка осуществляется с 7:00 до 23:00</p>
+            <div id="time-choice-input">
+                <label for="time">Укажите время доставки</label>
+                <input type="time" id="time" name="time" min="07:00" max="23:00" step="300">
+                <p class="hint">Доставка осуществляется с 7:00 до 23:00</p>
+            </div>
 
             <div class="order-buttons">
                 <button type="reset" onclick="ResetOrder()">Сбросить</button>
@@ -167,6 +269,7 @@
 <script src="./js/dishes.js"></script>
 <script src="./js/menu.js"></script>
 <script src="./js/order.js"></script>
+<script src="./js/validation.js"></script>
 
 </body>
 </html>

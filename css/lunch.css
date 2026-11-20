@@ -48,7 +48,7 @@
     border-radius: 18px;
 }
 
-.dish.hidden {
+.hidden {
     display: none;
 }
 
@@ -248,16 +248,120 @@
 }
 
 
+.combos h2 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.combos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 20px;
+}
+
+.combo {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.combo-dish {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.combo-dish img {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 6px;
+    transition: transform 0.2s ease;
+}
+
+.combo-dish img:hover {
+    transform: translateY(-6px) scale(1.1);
+}
+
+.combo-caption {
+    font-size: 15px;
+}
+
+.combo-note {
+    font-size: 13px;
+    color: #888888;
+}
+
+.notification-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.notification {
+    width: 100%;
+    max-width: 460px;
+    padding: 32px 36px;
+
+    background: #fffdf8;
+    border: 2px solid #b8e6c4;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.notification-text {
+    margin-bottom: 24px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.notification-button {
+    padding: 10px 28px;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+
+    color: #303030;
+    background: #ffffff;
+    border: 2px solid #303030;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.notification-button:hover {
+    color: #ffffff;
+    background: #ff7b00;
+    border-color: #ff7b00;
+}
+
+
 /* Адаптивность карточек блюд */
 
 @media (max-width: 900px) {
     .dishes {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .combos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 600px) {
     .dishes {
+        grid-template-columns: 1fr;
+    }
+
+    .combos-grid {
         grid-template-columns: 1fr;
     }
 }

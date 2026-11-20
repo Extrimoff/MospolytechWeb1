@@ -77,6 +77,18 @@ const ResetOrder = () => {
     RenderOrder();
 }
 
+const hideTime = () => {
+    document.querySelector("#time-choice-input").classList.add('hidden')
+}
+
+const showTime = () => {
+    document.querySelector("#time-choice-input").classList.remove('hidden')
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     RenderOrder();
+
+    document.querySelector("#time-radio").addEventListener('click', hideTime);
+    document.querySelector("#time-radio-enable").addEventListener('click', showTime);
 })
+
