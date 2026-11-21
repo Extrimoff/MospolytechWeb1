@@ -1,4 +1,5 @@
 const orderStorageKey = "foodConstructOrder";
+const apiKey = new URLSearchParams(location.search).get("api_key") ?? "demo";
 
 const categories = [
     { id: "soup", title: "Суп", empty: "Не выбран" },

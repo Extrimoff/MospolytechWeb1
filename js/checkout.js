@@ -1,5 +1,4 @@
 const ordersUrl = "/labs/api/orders";
-const ordersApiKey = "demo";
 
 const RenderComposition = () => {
     const list = document.querySelector("#order-dishes");
@@ -94,7 +93,7 @@ const BuildOrderData = (form) => {
 }
 
 const SendOrder = async (form) => {
-    const response = await fetch(`${ordersUrl}?api_key=${ordersApiKey}`, {
+    const response = await fetch(`${ordersUrl}?api_key=${apiKey}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
