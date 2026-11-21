@@ -94,9 +94,9 @@ const RenderOrders = () => {
                 <td>${FormatDelivery(order)}</td>
                 <td>
                     <div class="orders-actions">
-                        <button class="order-action" type="button" data-action="view" data-id="${order.id}" title="Подробнее" aria-label="Подробнее">${orderIcons.view}</button>
-                        <button class="order-action" type="button" data-action="edit" data-id="${order.id}" title="Редактирование" aria-label="Редактирование">${orderIcons.edit}</button>
-                        <button class="order-action order-action-delete" type="button" data-action="delete" data-id="${order.id}" title="Удаление" aria-label="Удаление">${orderIcons.delete}</button>
+                        <button class="order-action" type="button" data-action="view" data-id="${order.id}" title="Подробнее">${orderIcons.view}</button>
+                        <button class="order-action" type="button" data-action="edit" data-id="${order.id}" title="Редактирование">${orderIcons.edit}</button>
+                        <button class="order-action order-action-delete" type="button" data-action="delete" data-id="${order.id}" title="Удаление">${orderIcons.delete}</button>
                     </div>
                 </td>
             </tr>`;
