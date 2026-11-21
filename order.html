@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформить заказ — Food Construct</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/lunch.css">
+
+    <script src="./js/storage.js" defer></script>
+    <script src="./js/dishes.js" defer></script>
+    <script src="./js/checkout.js" defer></script>
+    <script src="./js/validation.js" defer></script>
+</head>
+<body>
+
+<header>
+    <a class="logo" href="./index.html">Food Construct</a>
+
+    <nav>
+        <a href="./index.html#about">О нас</a>
+        <a href="./lunch.html">Собрать ланч</a>
+        <a class="active" href="./order.html">Оформить заказ</a>
+        <a href="./index.html#contacts">Контакты</a>
+        <a href="./feedback.html">Обратная связь</a>
+        <a href="./login.html">Войти</a>
+    </nav>
+</header>
+
+<main>
+
+    <section>
+        <h2>Состав заказа</h2>
+
+        <p class="order-empty-message hidden" id="order-empty">
+            Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу
+            <a href="./lunch.html">Собрать ланч</a>.
+        </p>
+
+        <div class="dishes" id="order-dishes"></div>
+    </section>
+
+</main>
+
+<div class="order">
+    <h2>Оформление заказа</h2>
+
+    <form novalidate>
+
+        <div class="order-block">
+            <h3>Ваш заказ</h3>
+
+            <div id="order-content"></div>
+            <div id="order-total"></div>
+
+            <label for="comment">Комментарии к заказу</label>
+            <textarea id="comment" name="comment"></textarea>
+        </div>
+
+        <div class="order-block">
+            <h3>Ваши данные</h3>
+
+            <label for="full_name">Имя</label>
+            <input type="text" id="full_name" name="full_name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label class="choice">
+                <input type="checkbox" name="subscribe" value="1" checked>
+                Получать информацию о скидках и акциях
+            </label>
+
+            <label for="phone">Номер телефона</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="delivery_address">Адрес доставки</label>
+            <input type="text" id="delivery_address" name="delivery_address" required>
+            <p class="hint">Доставка осуществляется только по Москве</p>
+
+            <fieldset class="time-choice">
+                <legend>Время доставки:</legend>
+
+                <label class="choice">
+                    <input id="time-radio" type="radio" name="delivery_type" value="now" required>
+                    Как можно скорее
+                </label>
+
+                <label class="choice">
+                    <input id="time-radio-enable" type="radio" name="delivery_type" value="by_time">
+                    К указанному времени
+                </label>
+            </fieldset>
+            <div id="time-choice-input">
+                <label for="delivery_time">Укажите время доставки</label>
+                <input type="time" id="delivery_time" name="delivery_time" min="07:00" max="23:00" step="300">
+                <p class="hint">Доставка осуществляется с 7:00 до 23:00</p>
+            </div>
+
+            <div class="order-buttons">
+                <button type="reset">Сбросить</button>
+                <button type="submit">Отправить</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<footer id="contacts">
+    <p><strong>Телефон:</strong> <a href="tel:+70000000000">+7 (000) 000-00-00</a></p>
+    <p><strong>Email:</strong> <a href="mailto:info@foodconstruct.ru">info@foodconstruct.ru</a></p>
+    <p><strong>Обратная связь:</strong> <a href="./feedback.html">Оставить сообщение</a></p>
+    <p>Москва • Работаем ежедневно с 7:00 до 23:00</p>
+</footer>
+
+</body>
+</html>

@@ -1,11 +1,10 @@
-const GetComboVariants = () => {
-    const variants = [];
-
-    for (const combo of document.querySelectorAll(".combo[data-combo]"))
-        variants.push(combo.dataset.combo.split(" "));
-
-    return variants;
-}
+const comboVariants = [
+    ["soup", "main_course", "salad", "drink"],
+    ["soup", "main_course", "drink"],
+    ["soup", "salad", "drink"],
+    ["main_course", "salad", "drink"],
+    ["main_course", "drink"]
+]
 
 const GetOrderError = () => {
     const chosen = ["soup", "main_course", "salad", "drink"].filter(category => selected[category] !== null);
@@ -20,7 +19,7 @@ const GetOrderError = () => {
         return "Ничего не выбрано. Выберите блюда для заказа";
     }
 
-    const is_combo = GetComboVariants().some(variant =>
+    const is_combo = comboVariants.some(variant =>
         variant.length === chosen.length && variant.every(category => chosen.includes(category))
     );
 
@@ -66,20 +65,3 @@ const ShowNotification = (message) => {
     overlay.append(notification);
     document.body.append(overlay);
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    const order_form = document.querySelector(".order form");
-
-    order_form.addEventListener("submit", (event) => {
-        const error = GetOrderError();
-
-        if (error !== null) {
-            event.preventDefault();
-            ShowNotification(error);
-            return;
-        }
-
-        if (!order_form.reportValidity())
-            event.preventDefault();
-    });
-});

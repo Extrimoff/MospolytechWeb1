@@ -78,7 +78,8 @@
     color: #888888;
 }
 
-.dish-add {
+.dish-add,
+.dish-remove {
     width: 100%;
     margin-top: auto;
     padding: 8px;
@@ -92,6 +93,13 @@
     border: 1px solid #d4d4d4;
     border-radius: 6px;
     cursor: pointer;
+}
+
+.dish-add:hover,
+.dish-remove:hover {
+    color: #ffffff;
+    background: #ff7b00;
+    border-color: #ff7b00;
 }
 
 /* рамка при наведении и рамка выбранного блюда — одна и та же */
@@ -245,6 +253,66 @@
     border-radius: 6px;
 }
 
+.order-empty-message {
+    margin-bottom: 30px;
+
+    font-size: 16px;
+    color: #888888;
+}
+
+.order-empty-message a {
+    font-weight: 700;
+    color: #ff7b00;
+}
+
+.checkout-panel {
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+
+    padding: 14px 30px;
+
+    background: #f5fff8;
+    border-top: 2px solid #b8e6c4;
+    box-shadow: 0 -6px 18px rgba(34, 139, 93, 0.12);
+}
+
+.checkout-panel-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.checkout-panel-total {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.checkout-panel-total span {
+    color: #ff7b00;
+}
+
+.checkout-link {
+    padding: 10px 24px;
+
+    font-weight: 800;
+    color: #ffffff;
+    background: #ff7b00;
+    border-radius: 8px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.checkout-link.disabled {
+    color: #888888;
+    background: #e4e4e4;
+    pointer-events: none;
+}
+
 
 .combos h2 {
     margin-bottom: 30px;
@@ -348,6 +416,16 @@
 
     .combos-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .order form {
+        flex-direction: column;
+        gap: 30px;
+        max-width: 600px;
+    }
+
+    .checkout-panel-inner {
+        flex-wrap: wrap;
     }
 }
 

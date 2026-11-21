@@ -19,7 +19,7 @@ const RenderDishes = () => {
         for (const dish of dishes)
             if (dish.category === section.category)
                 content += `
-            <div class="dish" data-dish="${dish.keyword}" data-kind="${dish.kind}">
+            <div class="dish" data-id="${dish.id}" data-kind="${dish.kind}">
                 <img class="dish-photo" src="${dish.image}" alt="${dish.name}" loading="lazy">
                 <p class="dish-price">${dish.price} ₽</p>
                 <p class="dish-name">${dish.name}</p>
@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         await loadDishes();
         RenderDishes();
+        RestoreOrder();
     } catch (error) {
         console.error(error);
         ShowNotification("Не удалось загрузить блюда");

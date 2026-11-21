@@ -1,95 +1,54 @@
-const selected = {
-    soup: null,
-    main_course: null,
-    salad: null,
-    drink: null,
-    dessert: null
-}
+const AddDish = (button) => {
+    const card = button.closest(".dish");
+    const dish = dishes.find(item => item.id === Number(card.dataset.id));
 
-const categories = [
-    { id: "soup", title: "Суп", empty: "Блюдо не выбрано" },
-    { id: "main_course", title: "Главное блюдо", empty: "Блюдо не выбрано" },
-    { id: "salad", title: "Салат или стартер", empty: "Блюдо не выбрано" },
-    { id: "drink", title: "Напиток", empty: "Напиток не выбран" },
-    { id: "dessert", title: "Десерт", empty: "Десерт не выбран" }
-]
-
-const AddDish = (_this) => {
-    const card = _this.closest(".dish");
-    const dish = dishes.find(item => item.keyword === card.dataset.dish);
+    if (dish === undefined)
+        return;
 
     selected[dish.category] = dish;
 
     for (const item of card.parentElement.querySelectorAll(".dish"))
         item.classList.remove("selected");
+
     card.classList.add("selected");
 
-    document.querySelector(`#hidden-${dish.category}`).value = dish.keyword;
-
-    RenderOrder();
+    SaveOrderIds();
+    RenderCheckoutPanel();
 }
 
-const RenderOrder = () => {
-    const order_block = document.querySelector("#order-content");
-    const total_block = document.querySelector("#order-total");
+const RenderCheckoutPanel = () => {
+    const panel = document.querySelector("#checkout-panel");
+    const total_block = document.querySelector("#checkout-total");
+    const link = document.querySelector("#checkout-link");
 
-    if (Object.values(selected).every(dish => dish === null)) {
-        order_block.innerHTML = `<p class="order-empty">Ничего не выбрано</p>`;
-        total_block.innerHTML = ``;
+    if (panel === null)
         return;
-    }
 
-    let content = ``;
-    let total = 0;
+    const is_empty = Object.values(selected).every(dish => dish === null);
+    panel.classList.toggle("hidden", is_empty);
 
-    for (const category of categories) {
-        const dish = selected[category.id];
+    if (is_empty)
+        return;
 
-        content += `<div class="order-category">
-            <h4>${category.title}</h4>`;
+    total_block.textContent = `${GetOrderTotal()} ₽`;
 
-        if (dish === null)
-            content += `<p class="order-empty_category">${category.empty}</p>`;
-        else {
-            content += `<p class="order-dish"><span>${dish.name}</span><span>${dish.price} ₽</span></p>`;
-            total += dish.price;
-        }
+    const is_valid = GetOrderError() === null;
+    link.classList.toggle("disabled", !is_valid);
+    link.setAttribute("aria-disabled", String(!is_valid));
 
-        content += `</div>`;
-    }
-
-    order_block.innerHTML = content;
-    total_block.innerHTML = `<div class="order-total">
-        <span>Стоимость заказа</span>
-        <span>${total} ₽</span>
-    </div>`;
+    if (is_valid)
+        link.setAttribute("href", "./order.html");
+    else
+        link.removeAttribute("href");
 }
 
-const ResetOrder = () => {
-    for (const category of categories) {
-        selected[category.id] = null;
-        document.querySelector(`#hidden-${category.id}`).value = "";
-    }
+const RestoreOrder = () => {
+    LoadSelected();
 
-    for (const item of document.querySelectorAll(".dish"))
-        item.classList.remove("selected");
+    const ids = Object.values(selected).filter(dish => dish !== null).map(dish => dish.id);
 
-    RenderOrder();
+    for (const card of document.querySelectorAll(".dish"))
+        card.classList.toggle("selected", ids.includes(Number(card.dataset.id)));
+
+    RenderCheckoutPanel();
 }
-
-const hideTime = () => {
-    document.querySelector("#time-choice-input").classList.add('hidden')
-}
-
-const showTime = () => {
-    document.querySelector("#time-choice-input").classList.remove('hidden')
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    RenderOrder();
-
-    document.querySelector("#time-radio").addEventListener('click', hideTime);
-    document.querySelector("#time-radio-enable").addEventListener('click', showTime);
-    document.querySelector('.order-buttons button[type="reset"]').addEventListener('click', ResetOrder);
-})
-
