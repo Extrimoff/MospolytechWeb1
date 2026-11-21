@@ -90,5 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector("#time-radio").addEventListener('click', hideTime);
     document.querySelector("#time-radio-enable").addEventListener('click', showTime);
+    document.querySelector('.order-buttons button[type="reset"]').addEventListener('click', ResetOrder);
 })
 

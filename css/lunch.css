@@ -1,5 +1,3 @@
-/* Страница «Собрать ланч»: блюда и форма заказа */
-
 .filters {
     display: flex;
     flex-wrap: wrap;
@@ -342,9 +340,6 @@
     background: #ff7b00;
     border-color: #ff7b00;
 }
-
-
-/* Адаптивность карточек блюд */
 
 @media (max-width: 900px) {
     .dishes {

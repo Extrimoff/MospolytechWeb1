@@ -1,10 +1,7 @@
-const comboBlocks = document.querySelectorAll(".combo[data-combo]");
-const orderForm = document.querySelector(".order form");
-
 const GetComboVariants = () => {
     const variants = [];
 
-    for (const combo of comboBlocks)
+    for (const combo of document.querySelectorAll(".combo[data-combo]"))
         variants.push(combo.dataset.combo.split(" "));
 
     return variants;
@@ -70,15 +67,19 @@ const ShowNotification = (message) => {
     document.body.append(overlay);
 }
 
-orderForm.addEventListener("submit", (event) => {
-    const error = GetOrderError();
+document.addEventListener('DOMContentLoaded', () => {
+    const order_form = document.querySelector(".order form");
 
-    if (error !== null) {
-        event.preventDefault();
-        ShowNotification(error);
-        return;
-    }
+    order_form.addEventListener("submit", (event) => {
+        const error = GetOrderError();
 
-    if (!orderForm.reportValidity())
-        event.preventDefault();
+        if (error !== null) {
+            event.preventDefault();
+            ShowNotification(error);
+            return;
+        }
+
+        if (!order_form.reportValidity())
+            event.preventDefault();
+    });
 });

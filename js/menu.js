@@ -24,7 +24,7 @@ const RenderDishes = () => {
                 <p class="dish-price">${dish.price} ₽</p>
                 <p class="dish-name">${dish.name}</p>
                 <p class="dish-weight">${dish.count}</p>
-                <button class="dish-add" type="button" onclick="AddDish(this)">Добавить</button>
+                <button class="dish-add" type="button">Добавить</button>
             </div>`;
 
         const section_block = document.querySelector(section.block);
@@ -48,13 +48,26 @@ const FilterDishes = (filter_button) => {
         filter_button.classList.add("active");
 }
 
-document.addEventListener('click', (event) => {
-    const filter_button = event.target.closest(".filter");
+document.addEventListener('DOMContentLoaded', async () => {
+    document.addEventListener('click', (event) => {
+        const filter_button = event.target.closest(".filter");
 
-    if (filter_button !== null)
-        FilterDishes(filter_button);
-})
+        if (filter_button !== null) {
+            FilterDishes(filter_button);
+            return;
+        }
 
-document.addEventListener('DOMContentLoaded', () => {
-    RenderDishes();
+        const add_button = event.target.closest(".dish-add");
+
+        if (add_button !== null)
+            AddDish(add_button);
+    })
+
+    try {
+        await loadDishes();
+        RenderDishes();
+    } catch (error) {
+        console.error(error);
+        ShowNotification("Не удалось загрузить блюда");
+    }
 })
